@@ -1,0 +1,79 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'button'> & {
+  class?: string
+  id?: string
+  tag?: string
+}
+
+const { class: className, id, tag, ...props } = Astro.props
+
+const { pathname, href } = Astro.url
+const subpath = pathname.match(/[^\/]+/g)
+const isActive = href === pathname || href === '/' + subpath?.[0]
+
+console.log(Astro.url)
+---
+
+<script>
+  const buttons = document.querySelectorAll('button.heading-anchor')
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const btn = e.target as HTMLButtonElement
+      const url = btn.dataset.url as string
+      navigator.clipboard.writeText(url)
+    })
+  })
+</script>
+
+<div>
+  <button
+    type="button"
+    data-url={`${Astro.url.origin}${pathname}#${id}`}
+    class:list={['heading-anchor', className, { active: isActive }, tag]}
+    {...props}
+  >
+    #
+  </button>
+  <slot />
+</div>
+
+<style>
+  div {
+    position: relative;
+  }
+
+  div:hover button {
+    opacity: 1;
+  }
+
+  button {
+    padding-right: 1rem;
+    display: inline-block;
+    text-decoration: none;
+    transition:
+      color 0.2s,
+      opacity 0.2s;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:active,
+  button:hover {
+    color: var(--cyan);
+    transition:
+      color 0.2s,
+      opacity 0.2s;
+  }
+</style>
