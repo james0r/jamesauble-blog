@@ -4,7 +4,7 @@ description: 'This post is a supplemental to Next Learn course that adds basic u
 pubDate: 'Dec 31, 2023'
 heroImage: '/user-registration.avif'
 ---
-import HeaderLink from '../../components/HeaderLink.astro';
+import HeadingLink from '../../components/HeadingLink.astro';
 
 > Next.js 14 is the latest release at the time of this writing.
 
@@ -12,9 +12,9 @@ After moving to React from Vue a couple years back, in 2023 I finally took a dee
 
 As unsettling as learning a new framework can be after using something else for years, I'm always excited to see people improving approaches and tools that allow us to develop, ship, and maintain great websites. 
 
-<HeaderLink id="learn-next-with-next-learn" tag="h2">
+<HeadingLink id="learn-next-with-next-learn" tag="h2">
 ## Learn Next With Next Learn
-</HeaderLink>
+</HeadingLink>
 
 If you're a total beginner to Next.js or want to learn what the latest version offers, Next offers a 16 chapter tutorial called Next Learn that "brings you from React to Next.js". Therefore, it's a good idea to have foundational knowledge of React before you begin Next Learn.
 
@@ -22,9 +22,9 @@ This post is a supplemental to Next Learn though, so if you have yet to complete
 
 TL;DR
 
-<HeaderLink id="add-user-registration-to-your-dashboard" tag="h2">
+<HeadingLink id="add-user-registration-to-your-dashboard" tag="h2">
 ## Add User Registration to Your Dashboard
-</HeaderLink>
+</HeadingLink>
 
 
 > I always recommend trying to achieve something like this yourself and see how far you can get. I believe that the pain of trying is like a sledgehammer to your memory and is a necessary part of evolving as a developer. That said, sometimes checking out a solution, at least partially, can help you past a hurdle and keep you in the game.
@@ -222,9 +222,9 @@ import { Image } from 'astro:assets';
   height="577"
   />
 
-<HeaderLink id="register-action" tag="h3">
+<HeadingLink id="register-action" tag="h3">
 ### Register Action
-</HeaderLink>
+</HeadingLink>
 
 Just as we did with all the other forms in our Next Learn dashboard app, we need to create an action to handle the register form submission. Open up /app/lib/actions.ts and let's take a look at the action handler `createInvoice()`.
 

@@ -12,8 +12,6 @@ const { class: className, id, tag, ...props } = Astro.props
 const { pathname, href } = Astro.url
 const subpath = pathname.match(/[^\/]+/g)
 const isActive = href === pathname || href === '/' + subpath?.[0]
-
-console.log(Astro.url)
 ---
 
 <script>
