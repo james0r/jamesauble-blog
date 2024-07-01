@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 type Props = HTMLAttributes<'button'> & {
   class?: string
@@ -27,8 +28,20 @@ const isActive = href === pathname || href === '/' + subpath?.[0]
 </script>
 
 <div>
+  <ReactTooltip
+    id="copy-button"
+    place="top"
+    content="Copied!"
+    afterShow={() => { console.log('copied')}}
+    afterHide={() => { console.log('copied')}}
+    delayHide={1000}
+    openOnClick={true}
+    client:load
+  />
   <button
     type="button"
+    data-tooltip-id="copy-button"
+    data-tooltip-variant="light"
     data-url={`${Astro.url.origin}${pathname}#${id}`}
     class:list={['heading-anchor', className, { active: isActive }, tag]}
     {...props}

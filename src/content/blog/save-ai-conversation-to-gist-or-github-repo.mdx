@@ -1,0 +1,77 @@
+---
+title: 'Save AI Conversation to Gist or Github Repo'
+description: 'If you want to save the answer to a collection of answers about a certain topic is to copy the Markdown and save it to a repository either locally or remotely. Another option for one-off conversations is to just save a Gist.'
+pubDate: 'Nov 14, 2023'
+heroImage: '/save-ai-conversation-to-gist-featured-image.avif'
+---
+import HeadingLink from '../../components/HeadingLink.astro';
+
+Doing a little research today with the help of AI as I now so often do.
+
+At the moment, I'm using Phind.com which is one of my favorite chatbots for development. I want to reference this answer later and started exploring my options for saving the conversation.
+
+The quick and obvious solution is to just copy a link to the conversation. This is great because with Phind you can just reference the URL later and the answer is already cached, so you don't have to wait for the answer to generate and the page appears to be well-cached and performantly loaded.
+
+However, another option if you want to save the answer to a collection of answers about a certain topic is to copy the Markdown and save it to a repository either locally or remotely.
+
+<HeadingLink id="create-a-conversations-repository" tag="h2">
+## Create a Conversations Repository
+</HeadingLink>
+
+For creating a collections of AI conversations, you can create a Github repository for a specific topic.
+
+For demonstration purposes, I've created a repository right in the browser on Github.com and called it [react-ai-conversations](https://github.com/james0r/react-ai-conversations/).
+
+Maybe we don't want to bother with pulling this repo locally and just want to quickly paste in a few conversations.
+
+For this let's use Github Codespaces which essentially gives you a VS Code editor right in the browser with which we can commit code directly to our new repo in the browser.
+
+Click on Code (where you probably often click to get the repo URL) and click the Codespaces tab.
+
+Then click on Create codespace on main (or whatever branch you're working on).
+
+import { Image } from 'astro:assets';
+import GithubCreateCodespace from './images/github-create-codespace.avif'
+
+<Image 
+  src={GithubCreateCodespace}
+  alt="github create codespace" 
+  />
+
+Create a new file for your conversation. I'll call mine react-hook-rules.md.
+
+Copy the Markdown from whatever chatbot you're using. In my case this is Phind.com and the button to copy the conversation looks like this
+
+import SaveAiConversation from './images/save-ai-conversation-to-gist-featured-image.avif'
+
+<Image src={SaveAiConversation} alt="copy conversation button in phind.com conversation" />
+
+Paste the Markdown in the Codespace editor.
+
+Then, click on the Source Control icon on the upper left of your editor, add a commit message and click Commit.
+
+import CommitFromVSCode from './images/commit-from-vscode.avif'
+
+<Image src={CommitFromVSCode} alt="commit to repo from codespaces screenshot" />
+
+And there you have it! You now have a repo for your AI conversations. You can check out my [example repo](https://github.com/james0r/react-ai-conversations/).
+
+<HeadingLink id="create-a-gist-from-your-ai-conversation" tag="h2">
+## Create a Gist From Your AI Conversation
+</HeadingLink>
+
+If you just maybe have a one off and you want to semi-self-host your AI conversation, you can create a public or private [Gist](https://gist.github.com/).
+
+Easy peasy.
+
+Just navigate to https://gist.github.com, choose a file name for your gist and an optional description, paste in your Markdown, and Save as either public or private.
+
+import PartsOfGist from './images/parts-of-gist.avif'
+
+<Image src={PartsOfGist} alt="parts of a gist" />
+
+💥💥💥 Boom done!
+
+That's all for today.
+
+Hope you enjoyed and code on web assassins!
