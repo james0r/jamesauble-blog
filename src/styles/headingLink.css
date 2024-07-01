@@ -1,0 +1,31 @@
+button.heading-anchor {
+  padding-right: 1rem;
+  display: inline-block;
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    opacity 0.2s;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+button.heading-anchor:active,
+button.heading-anchor:hover {
+  color: var(--cyan);
+  transition:
+    color 0.2s,
+    opacity 0.2s;
+}
+
+div.heading-container:hover button.heading-anchor {
+  opacity: 1;
+}

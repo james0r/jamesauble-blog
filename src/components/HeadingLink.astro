@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { Tooltip as ReactTooltip } from 'react-tooltip'
+import Tooltip from './react/Tooltip'
+import '../styles/headingLink.css'
 
 type Props = HTMLAttributes<'button'> & {
   class?: string
@@ -13,6 +14,9 @@ const { class: className, id, tag, ...props } = Astro.props
 const { pathname, href } = Astro.url
 const subpath = pathname.match(/[^\/]+/g)
 const isActive = href === pathname || href === '/' + subpath?.[0]
+
+const url = `${Astro.url.origin}${pathname}#${id}`
+
 ---
 
 <script>
@@ -27,27 +31,12 @@ const isActive = href === pathname || href === '/' + subpath?.[0]
   })
 </script>
 
-<div>
-  <ReactTooltip
-    id="copy-button"
-    place="top"
-    content="Copied!"
-    afterShow={() => { console.log('copied')}}
-    afterHide={() => { console.log('copied')}}
-    delayHide={1000}
-    openOnClick={true}
-    client:load
+<div class="heading-container">
+  <Tooltip 
+  url={url}
+  tag={tag}
+  client:load 
   />
-  <button
-    type="button"
-    data-tooltip-id="copy-button"
-    data-tooltip-variant="light"
-    data-url={`${Astro.url.origin}${pathname}#${id}`}
-    class:list={['heading-anchor', className, { active: isActive }, tag]}
-    {...props}
-  >
-    #
-  </button>
   <slot />
 </div>
 
@@ -56,35 +45,4 @@ const isActive = href === pathname || href === '/' + subpath?.[0]
     position: relative;
   }
 
-  div:hover button {
-    opacity: 1;
-  }
-
-  button {
-    padding-right: 1rem;
-    display: inline-block;
-    text-decoration: none;
-    transition:
-      color 0.2s,
-      opacity 0.2s;
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translateX(-100%);
-    -webkit-appearance: none;
-    appearance: none;
-    -moz-appearance: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  button:active,
-  button:hover {
-    color: var(--cyan);
-    transition:
-      color 0.2s,
-      opacity 0.2s;
-  }
 </style>
